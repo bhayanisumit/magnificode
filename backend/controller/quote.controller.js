@@ -14,7 +14,7 @@ const filterData = (val) => {
 };
 
 router.post("/create", limiter, async (req, res, next) => {
-    console.log('req.body',req.body);
+    
   const v = new Validator(req.body, {
     quote: "required",
   });
@@ -42,7 +42,7 @@ router.post("/create", limiter, async (req, res, next) => {
 
 router.get("/", limiter, async (req, res, next) => {
   const getQuote = await quote.find();
-  console.log('get' ,getQuote.length);
+  
   if (!getQuote.length) return res.status(200).json({ status: 0, data: "", message: "No Quote data found" });
   
   return res.status(200).json({ status: 1, data: getQuote, message: "Quote data" });
